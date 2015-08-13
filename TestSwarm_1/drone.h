@@ -13,7 +13,7 @@ public:
     //Constructor and destructor
     explicit Drone(QObject *parent = 0);
     Drone(int aID, QVector3D aPos, int aSwarmSize);
-    virtual ~Drone();
+    //virtual ~Drone();
 
 protected:
     // empty

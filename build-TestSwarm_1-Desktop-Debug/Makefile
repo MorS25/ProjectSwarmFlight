@@ -47,13 +47,13 @@ OBJECTS_DIR   = ./
 
 SOURCES       = ../TestSwarm_1/main.cpp \
 		../TestSwarm_1/mainwindow.cpp \
-		../TestSwarm_1/drohne.cpp moc_mainwindow.cpp \
-		moc_drohne.cpp
+		../TestSwarm_1/drone.cpp moc_mainwindow.cpp \
+		moc_drone.cpp
 OBJECTS       = main.o \
 		mainwindow.o \
-		drohne.o \
+		drone.o \
 		moc_mainwindow.o \
-		moc_drohne.o
+		moc_drone.o
 DIST          = /usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/spec_pre.prf \
 		/usr/lib/x86_64-linux-gnu/qt5/mkspecs/common/shell-unix.conf \
 		/usr/lib/x86_64-linux-gnu/qt5/mkspecs/common/unix.conf \
@@ -279,7 +279,7 @@ qmake_all: FORCE
 
 dist: 
 	@test -d .tmp/TestSwarm_11.0.0 || mkdir -p .tmp/TestSwarm_11.0.0
-	$(COPY_FILE) --parents $(SOURCES) $(DIST) .tmp/TestSwarm_11.0.0/ && $(COPY_FILE) --parents ../TestSwarm_1/mainwindow.h ../TestSwarm_1/drohne.h .tmp/TestSwarm_11.0.0/ && $(COPY_FILE) --parents ../TestSwarm_1/main.cpp ../TestSwarm_1/mainwindow.cpp ../TestSwarm_1/drohne.cpp .tmp/TestSwarm_11.0.0/ && $(COPY_FILE) --parents ../TestSwarm_1/mainwindow.ui .tmp/TestSwarm_11.0.0/ && (cd `dirname .tmp/TestSwarm_11.0.0` && $(TAR) TestSwarm_11.0.0.tar TestSwarm_11.0.0 && $(COMPRESS) TestSwarm_11.0.0.tar) && $(MOVE) `dirname .tmp/TestSwarm_11.0.0`/TestSwarm_11.0.0.tar.gz . && $(DEL_FILE) -r .tmp/TestSwarm_11.0.0
+	$(COPY_FILE) --parents $(SOURCES) $(DIST) .tmp/TestSwarm_11.0.0/ && $(COPY_FILE) --parents ../TestSwarm_1/mainwindow.h ../TestSwarm_1/drone.h .tmp/TestSwarm_11.0.0/ && $(COPY_FILE) --parents ../TestSwarm_1/main.cpp ../TestSwarm_1/mainwindow.cpp ../TestSwarm_1/drone.cpp .tmp/TestSwarm_11.0.0/ && $(COPY_FILE) --parents ../TestSwarm_1/mainwindow.ui .tmp/TestSwarm_11.0.0/ && (cd `dirname .tmp/TestSwarm_11.0.0` && $(TAR) TestSwarm_11.0.0.tar TestSwarm_11.0.0 && $(COMPRESS) TestSwarm_11.0.0.tar) && $(MOVE) `dirname .tmp/TestSwarm_11.0.0`/TestSwarm_11.0.0.tar.gz . && $(DEL_FILE) -r .tmp/TestSwarm_11.0.0
 
 
 clean:compiler_clean 
@@ -302,9 +302,9 @@ check: first
 
 compiler_rcc_make_all:
 compiler_rcc_clean:
-compiler_moc_header_make_all: moc_mainwindow.cpp moc_drohne.cpp
+compiler_moc_header_make_all: moc_mainwindow.cpp moc_drone.cpp
 compiler_moc_header_clean:
-	-$(DEL_FILE) moc_mainwindow.cpp moc_drohne.cpp
+	-$(DEL_FILE) moc_mainwindow.cpp moc_drone.cpp
 moc_mainwindow.cpp: /usr/include/qt5/QtWidgets/QMainWindow \
 		/usr/include/qt5/QtWidgets/qmainwindow.h \
 		/usr/include/qt5/QtWidgets/qwidget.h \
@@ -419,7 +419,7 @@ moc_mainwindow.cpp: /usr/include/qt5/QtWidgets/QMainWindow \
 		../TestSwarm_1/mainwindow.h
 	/usr/lib/x86_64-linux-gnu/qt5/bin/moc $(DEFINES) $(INCPATH) -I/usr/include/c++/4.8 -I/usr/include/x86_64-linux-gnu/c++/4.8 -I/usr/include/c++/4.8/backward -I/usr/lib/gcc/x86_64-linux-gnu/4.8/include -I/usr/local/include -I/usr/lib/gcc/x86_64-linux-gnu/4.8/include-fixed -I/usr/include/x86_64-linux-gnu -I/usr/include ../TestSwarm_1/mainwindow.h -o moc_mainwindow.cpp
 
-moc_drohne.cpp: /usr/include/qt5/QtCore/QObject \
+moc_drone.cpp: /usr/include/qt5/QtCore/QObject \
 		/usr/include/qt5/QtCore/qobject.h \
 		/usr/include/qt5/QtCore/qobjectdefs.h \
 		/usr/include/qt5/QtCore/qnamespace.h \
@@ -479,8 +479,10 @@ moc_drohne.cpp: /usr/include/qt5/QtCore/QObject \
 		/usr/include/qt5/QtCore/QVector \
 		/usr/include/qt5/QtCore/qvector.h \
 		/usr/include/qt5/QtCore/qpoint.h \
-		../TestSwarm_1/drohne.h
-	/usr/lib/x86_64-linux-gnu/qt5/bin/moc $(DEFINES) $(INCPATH) -I/usr/include/c++/4.8 -I/usr/include/x86_64-linux-gnu/c++/4.8 -I/usr/include/c++/4.8/backward -I/usr/lib/gcc/x86_64-linux-gnu/4.8/include -I/usr/local/include -I/usr/lib/gcc/x86_64-linux-gnu/4.8/include-fixed -I/usr/include/x86_64-linux-gnu -I/usr/include ../TestSwarm_1/drohne.h -o moc_drohne.cpp
+		/usr/include/qt5/QtGui/QVector3D \
+		/usr/include/qt5/QtGui/qvector3d.h \
+		../TestSwarm_1/drone.h
+	/usr/lib/x86_64-linux-gnu/qt5/bin/moc $(DEFINES) $(INCPATH) -I/usr/include/c++/4.8 -I/usr/include/x86_64-linux-gnu/c++/4.8 -I/usr/include/c++/4.8/backward -I/usr/lib/gcc/x86_64-linux-gnu/4.8/include -I/usr/local/include -I/usr/lib/gcc/x86_64-linux-gnu/4.8/include-fixed -I/usr/include/x86_64-linux-gnu -I/usr/include ../TestSwarm_1/drone.h -o moc_drone.cpp
 
 compiler_moc_source_make_all:
 compiler_moc_source_clean:
@@ -733,59 +735,10 @@ mainwindow.o: ../TestSwarm_1/mainwindow.cpp ../TestSwarm_1/mainwindow.h \
 		/usr/include/qt5/QtGui/qtouchdevice.h \
 		/usr/include/qt5/QtWidgets/qtabwidget.h \
 		/usr/include/qt5/QtGui/qicon.h \
-		ui_mainwindow.h \
-		/usr/include/qt5/QtCore/QVariant \
-		/usr/include/qt5/QtWidgets/QAction \
-		/usr/include/qt5/QtWidgets/qaction.h \
-		/usr/include/qt5/QtWidgets/qactiongroup.h \
-		/usr/include/qt5/QtWidgets/QApplication \
-		/usr/include/qt5/QtWidgets/qapplication.h \
-		/usr/include/qt5/QtCore/qcoreapplication.h \
-		/usr/include/qt5/QtCore/qeventloop.h \
-		/usr/include/qt5/QtWidgets/qdesktopwidget.h \
-		/usr/include/qt5/QtGui/qguiapplication.h \
-		/usr/include/qt5/QtGui/qinputmethod.h \
-		/usr/include/qt5/QtWidgets/QButtonGroup \
-		/usr/include/qt5/QtWidgets/qbuttongroup.h \
-		/usr/include/qt5/QtWidgets/QGraphicsView \
-		/usr/include/qt5/QtWidgets/qgraphicsview.h \
-		/usr/include/qt5/QtGui/qpainter.h \
-		/usr/include/qt5/QtGui/qtextoption.h \
-		/usr/include/qt5/QtGui/qpen.h \
-		/usr/include/qt5/QtWidgets/qscrollarea.h \
-		/usr/include/qt5/QtWidgets/qabstractscrollarea.h \
-		/usr/include/qt5/QtWidgets/qframe.h \
-		/usr/include/qt5/QtWidgets/qgraphicsscene.h \
-		/usr/include/qt5/QtWidgets/QHeaderView \
-		/usr/include/qt5/QtWidgets/qheaderview.h \
-		/usr/include/qt5/QtWidgets/qabstractitemview.h \
-		/usr/include/qt5/QtCore/qabstractitemmodel.h \
-		/usr/include/qt5/QtCore/qitemselectionmodel.h \
-		/usr/include/qt5/QtWidgets/qabstractitemdelegate.h \
-		/usr/include/qt5/QtWidgets/qstyleoption.h \
-		/usr/include/qt5/QtWidgets/qabstractspinbox.h \
-		/usr/include/qt5/QtGui/qvalidator.h \
-		/usr/include/qt5/QtCore/qregularexpression.h \
-		/usr/include/qt5/QtWidgets/qslider.h \
-		/usr/include/qt5/QtWidgets/qabstractslider.h \
-		/usr/include/qt5/QtWidgets/qstyle.h \
-		/usr/include/qt5/QtWidgets/qtabbar.h \
-		/usr/include/qt5/QtWidgets/qrubberband.h \
-		/usr/include/qt5/QtWidgets/QMenu \
-		/usr/include/qt5/QtWidgets/qmenu.h \
-		/usr/include/qt5/QtWidgets/QMenuBar \
-		/usr/include/qt5/QtWidgets/qmenubar.h \
-		/usr/include/qt5/QtWidgets/QPushButton \
-		/usr/include/qt5/QtWidgets/qpushbutton.h \
-		/usr/include/qt5/QtWidgets/qabstractbutton.h \
-		/usr/include/qt5/QtWidgets/QStatusBar \
-		/usr/include/qt5/QtWidgets/qstatusbar.h \
-		/usr/include/qt5/QtWidgets/QToolBar \
-		/usr/include/qt5/QtWidgets/qtoolbar.h \
-		/usr/include/qt5/QtWidgets/QWidget
+		ui_mainwindow.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o mainwindow.o ../TestSwarm_1/mainwindow.cpp
 
-drohne.o: ../TestSwarm_1/drohne.cpp ../TestSwarm_1/drohne.h \
+drone.o: ../TestSwarm_1/drone.cpp ../TestSwarm_1/drone.h \
 		/usr/include/qt5/QtCore/QObject \
 		/usr/include/qt5/QtCore/qobject.h \
 		/usr/include/qt5/QtCore/qobjectdefs.h \
@@ -845,14 +798,16 @@ drohne.o: ../TestSwarm_1/drohne.cpp ../TestSwarm_1/drohne.h \
 		/usr/include/qt5/QtCore/qobject_impl.h \
 		/usr/include/qt5/QtCore/QVector \
 		/usr/include/qt5/QtCore/qvector.h \
-		/usr/include/qt5/QtCore/qpoint.h
-	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o drohne.o ../TestSwarm_1/drohne.cpp
+		/usr/include/qt5/QtCore/qpoint.h \
+		/usr/include/qt5/QtGui/QVector3D \
+		/usr/include/qt5/QtGui/qvector3d.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o drone.o ../TestSwarm_1/drone.cpp
 
 moc_mainwindow.o: moc_mainwindow.cpp 
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o moc_mainwindow.o moc_mainwindow.cpp
 
-moc_drohne.o: moc_drohne.cpp 
-	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o moc_drohne.o moc_drohne.cpp
+moc_drone.o: moc_drone.cpp 
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o moc_drone.o moc_drone.cpp
 
 ####### Install
 
