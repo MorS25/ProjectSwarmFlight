@@ -20,7 +20,7 @@
 QT_BEGIN_MOC_NAMESPACE
 struct qt_meta_stringdata_drohne_t {
     QByteArrayData data[8];
-    char stringdata[55];
+    char stringdata[72];
 };
 #define QT_MOC_LITERAL(idx, ofs, len) \
     Q_STATIC_BYTE_ARRAY_DATA_HEADER_INITIALIZER_WITH_OFFSET(len, \
@@ -30,16 +30,16 @@ struct qt_meta_stringdata_drohne_t {
 static const qt_meta_stringdata_drohne_t qt_meta_stringdata_drohne = {
     {
 QT_MOC_LITERAL(0, 0, 6),
-QT_MOC_LITERAL(1, 7, 8),
-QT_MOC_LITERAL(2, 16, 0),
-QT_MOC_LITERAL(3, 17, 5),
-QT_MOC_LITERAL(4, 23, 2),
-QT_MOC_LITERAL(5, 26, 12),
-QT_MOC_LITERAL(6, 39, 7),
-QT_MOC_LITERAL(7, 47, 6)
+QT_MOC_LITERAL(1, 7, 13),
+QT_MOC_LITERAL(2, 21, 0),
+QT_MOC_LITERAL(3, 22, 9),
+QT_MOC_LITERAL(4, 32, 8),
+QT_MOC_LITERAL(5, 41, 12),
+QT_MOC_LITERAL(6, 54, 8),
+QT_MOC_LITERAL(7, 63, 7)
     },
-    "drohne\0myNewPos\0\0myPos\0ID\0matePosInput\0"
-    "matePos\0mateID\0"
+    "drohne\0mSignalNewPos\0\0signalPos\0"
+    "signalID\0matePosInput\0aMatePos\0aMateID\0"
 };
 #undef QT_MOC_LITERAL
 
@@ -76,7 +76,7 @@ void drohne::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, void
     if (_c == QMetaObject::InvokeMetaMethod) {
         drohne *_t = static_cast<drohne *>(_o);
         switch (_id) {
-        case 0: _t->myNewPos((*reinterpret_cast< QVector3D(*)>(_a[1])),(*reinterpret_cast< int(*)>(_a[2]))); break;
+        case 0: _t->mSignalNewPos((*reinterpret_cast< QVector3D(*)>(_a[1])),(*reinterpret_cast< int(*)>(_a[2]))); break;
         case 1: _t->matePosInput((*reinterpret_cast< QVector3D(*)>(_a[1])),(*reinterpret_cast< int(*)>(_a[2]))); break;
         default: ;
         }
@@ -85,7 +85,7 @@ void drohne::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, void
         void **func = reinterpret_cast<void **>(_a[1]);
         {
             typedef void (drohne::*_t)(QVector3D , int );
-            if (*reinterpret_cast<_t *>(func) == static_cast<_t>(&drohne::myNewPos)) {
+            if (*reinterpret_cast<_t *>(func) == static_cast<_t>(&drohne::mSignalNewPos)) {
                 *result = 0;
             }
         }
@@ -129,7 +129,7 @@ int drohne::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
 }
 
 // SIGNAL 0
-void drohne::myNewPos(QVector3D _t1, int _t2)
+void drohne::mSignalNewPos(QVector3D _t1, int _t2)
 {
     void *_a[] = { 0, const_cast<void*>(reinterpret_cast<const void*>(&_t1)), const_cast<void*>(reinterpret_cast<const void*>(&_t2)) };
     QMetaObject::activate(this, &staticMetaObject, 0, _a);

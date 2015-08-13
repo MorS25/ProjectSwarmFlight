@@ -14,9 +14,9 @@ TEMPLATE = app
 
 SOURCES += main.cpp\
         mainwindow.cpp \
-    drohne.cpp
+    drone.cpp
 
 HEADERS  += mainwindow.h \
-    drohne.h
+    drone.h
 
 FORMS    += mainwindow.ui
