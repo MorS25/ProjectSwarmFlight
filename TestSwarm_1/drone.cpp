@@ -45,12 +45,36 @@ void Drone::iMove()
 
 bool Drone::swarming()
 {
+    int i=0;
+    int swarmingStatus=0;
+    float safetyDistance=0.7;
+    float currentBadDistance=1.0;
+
     //collision test
-        //first compare own elevation to others
+    for(i=0;i<this->mSwarmSize;i++)
+    {
 
-        //if drones have the same elevation, check out latitude and longitude
+        //when the distance < safetyDistance, the drones could collide
+        //with rel. positions, the length of the position = distance to object
+        if(this->mMatesPos[i].length()<safetyDistance)
+        {
+            if(this->mMatesPos[i].length()<currentBadDistance)
+            {
+                //change current smallest distance
+                currentBadDistance = this->mMatesPos[i].length();
 
-    return 1;
+                this->mDirect = this->mMatesPos[i].normalized() * -1;
+            }
+
+            swarmingStatus = 0;
+        }
+        else
+        {
+            swarmingStatus = 1;
+        }
+
+    }
+    return swarmingStatus;
 }
 
 bool Drone::remoteControl()
